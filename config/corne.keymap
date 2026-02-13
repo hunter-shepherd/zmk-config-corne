@@ -270,7 +270,7 @@
         };
 
         MOU {
-                display-name = "Extra";
+                display-name = "Mouse";
             bindings = <
 &trans  &trans       &trans         &trans          &trans      &msc SCRL_UP    &trans  &trans  &trans  &trans  &trans      &trans
 &trans  &trans       &trans        &mmv MOVE_UP      &trans   &msc SCRL_DOWN            &trans  &mkp LCLK  &mkp RCLK  &trans  &trans       &trans
