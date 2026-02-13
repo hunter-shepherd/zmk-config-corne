@@ -23,13 +23,13 @@
             require-prior-idle-ms = <120>; /* tune to taste */
         };
 
-        sp_nav: sp_nav {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <0>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-            bindings = <&mo NAV &kp SPACE>;
-        };
+    sp_nav: sp_nav {
+        compatible = "zmk,behavior-hold-tap";
+        #binding-cells = <0>;
+        flavor = "hold-preferred";
+        tapping-term-ms = <200>;
+        bindings = <&mo NAV &kp SPACE>;
+    };
 
         para: para {
             compatible = "zmk,behavior-tap-dance";
