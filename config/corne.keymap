@@ -4,10 +4,11 @@
 #include <dt-bindings/zmk/pointing.h>
 
 #define DEF 0
-#define NAV 1
+#define NUM 1
 #define SYM 2
-#define ADJ 3
-#define EXTRA 4
+#define MOU 3
+#define SYS 4
+#define NAV 5
 
 / {
     behaviors {
@@ -56,14 +57,67 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
-                <&macro_press>,
-                <&kp LCTRL>,
-                <&macro_tap>,
-                <&kp TAB>,
-                <&macro_release>,
-                <&kp LCTRL>;
+                <&macro_press>, <&kp LCTRL>,
+                <&macro_tap>,   <&kp TAB>,
+                <&macro_release>, <&kp LCTRL>;
         };
-
+    
+        ss_toolbar: ss_toolbar {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,   <&kp LGUI>,   /* Command */
+                <&macro_press>,   <&kp LSHFT>,  /* Shift */
+                <&macro_tap>,     <&kp N5>,
+                <&macro_release>, <&kp LSHFT>,
+                <&macro_release>, <&kp LGUI>;
+        };
+    
+        ss_select: ss_select {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,   <&kp LGUI>,
+                <&macro_press>,   <&kp LSHFT>,
+                <&macro_tap>,     <&kp N4>,
+                <&macro_release>, <&kp LSHFT>,
+                <&macro_release>, <&kp LGUI>;
+        };
+        nav_word_left: nav_word_left {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,   <&kp LALT>,          /* Option */
+                <&macro_tap>,     <&kp LEFT_ARROW>,
+                <&macro_release>, <&kp LALT>;
+        };
+    
+        nav_word_right: nav_word_right {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,   <&kp LALT>,          /* Option */
+                <&macro_tap>,     <&kp RIGHT_ARROW>,
+                <&macro_release>, <&kp LALT>;
+        };
+    
+        nav_doc_top: nav_doc_top {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,   <&kp LGUI>,          /* Command */
+                <&macro_tap>,     <&kp UP_ARROW>,
+                <&macro_release>, <&kp LGUI>;
+        };
+    
+        nav_doc_bottom: nav_doc_bottom {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,   <&kp LGUI>,          /* Command */
+                <&macro_tap>,     <&kp DOWN_ARROW>,
+                <&macro_release>, <&kp LGUI>;
+        };
     };
 
     combos {
@@ -176,37 +230,38 @@
         compatible = "zmk,keymap";
 
         DEF {
-            display-name = "Base";
+          display-name = "Base";
+        
+          bindings = <
+            &kp TAB      &kp Q        &kp W        &kp E        &kp R        &kp T         &kp Y        &kp U        &kp I        &kp O        &kp P        &kp DELETE
+            &kp ESCAPE   &hm LCTRL A  &hm LALT S   &hm LGUI D   &hm LSHFT F  &kp G         &kp H        &hm LSHFT J  &hm LGUI K   &hm LALT L   &hm LCTRL SEMI  &ss_toolbar
+            &kp CAPSLOCK &kp Z        &kp X        &kp C        &kp V        &kp B         &kp N        &kp M        &kp COMMA    &kp DOT      &kp FSLH     &ss_select
+        
+                                  &tog SYM   &tog NUM   &lt SYS RET      &lt NAV SPACE   &kp BACKSPACE   &mo MOU
+          >;
+        };
 
-            // -----------------------------------------------------------------------------------------
-            // |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  |
-            // |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |
-            // |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |
-            // | GUI | CTRL | SHFT | LWR | SPC |   | ENT | RSE  | BKSP | ALT | ESC |
-
-            bindings = <
-&kp TAB    &kp Q  &kp W  &kp E     &kp R  &kp T        &kp Y    &kp U      &kp I          &kp O    &kp P     &kp BACKSPACE
-&kp LSHFT  &kp A  &kp S  &kp D     &kp F  &kp G        &kp H    &kp J      &kp K          &kp L    &kp SEMI  &kp SQT
-&kp LCTRL  &kp Z  &kp X  &kp C     &kp V  &kp B        &kp N    &kp M      &kp COMMA      &kp DOT  &kp FSLH  &mo 4
-                         &kp LGUI  &mo 1  &kp SPACE    &kp RET  &lt 2 TAB  &kp LEFT_ALT
-            >;
+        NUM {
+          display-name = "Numbers";
+        
+          bindings = <
+            &trans   &kp N1   &kp N2   &kp N3   &kp N4   &kp N5     &kp N6   &kp N7   &kp N8   &kp N9   &kp N0   &trans
+            &trans   &kp FSLH &kp STAR &kp MINUS &kp PLUS &kp EQUAL  &trans   &kp N4   &kp N5   &kp N6   &trans   &trans
+            &trans   &trans   &trans   &trans   &trans   &trans     &trans   &kp N1   &kp N2   &kp N3   &trans   &trans
+        
+                                     &trans        &trans      &trans            &trans  &trans  &trans          >;
         };
 
         NAV {
-            display-name = "NavNum";
-
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-            // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-            // | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-            // | GUI | CTRL | SHFT | LWR | SPC |   | ENT | RSE  | BKSP | ALT | ESC |
-
-            bindings = <
-&trans  &kp N1  &kp N2    &kp N3       &kp N4           &kp N5           &kp N6   &kp N7        &kp N8        &kp N9        &kp N0  &trans
-&caps_word  &trans  &trans    &kp UP_ARROW  &browsertab      &kp PAGE_UP      &kp N0   &kp N4  &kp N5        &kp N6  &trans  &trans
-&trans  &trans  &kp LEFT  &kp DOWN      &kp RIGHT_ARROW  &kp PAGE_DOWN    &trans   &kp N1  &kp N2  &kp N3  &trans  &trans
-                          &kp LGUI      &trans           &kp SPACE        &kp RET  &mo 3        &trans
-            >;
+          display-name = "Nav";
+        
+          bindings = <
+            &trans &trans &trans &trans &trans &trans      &trans &trans &trans &trans &trans &trans
+            &kp LSHFT &trans &trans &trans &trans &trans   &kp LEFT_ARROW &kp DOWN_ARROW &kp UP_ARROW &kp RIGHT_ARROW &trans &trans
+            &trans &trans &kp LGUI &kp LALT &trans &trans  &nav_word_left &nav_doc_bottom &nav_doc_top &nav_word_right &trans &trans
+        
+                              &trans &trans &trans   &trans &trans &trans
+          >;
         };
 
         SYM {
@@ -226,7 +281,7 @@
             >;
         };
 
-        ADJ {
+        SYS {
             display-name = "System";
             bindings = <
 &trans  &kp F1        &kp F2        &kp F3        &kp F4      &kp F5            &kp F6  &kp F7  &kp F8  &kp F9  &kp F10      &trans
@@ -235,7 +290,7 @@
                                     &trans        &trans      &trans            &trans  &trans  &trans
             >;
         };
-        EXTRA {
+        MOU {
                 display-name = "Extra";
             bindings = <
 &trans  &trans       &trans         &trans          &trans      &msc SCRL_UP    &trans  &trans  &trans  &trans  &trans      &trans
