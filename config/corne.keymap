@@ -26,14 +26,9 @@
         sp_nav: sp_nav {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <0>;
-        
             flavor = "hold-preferred";
             tapping-term-ms = <200>;
-            quick-tap-ms = <0>;
-            // Optional: helps prevent accidental “nav” when you’re just typing space quickly.
-            // require-prior-idle-ms = <80>;
-        
-            bindings = <&mo NAV>, <&kp SPACE>;
+            bindings = <&mo NAV &kp SPACE>;
         };
 
         para: para {
