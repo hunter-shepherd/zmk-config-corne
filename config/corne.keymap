@@ -23,6 +23,19 @@
             require-prior-idle-ms = <120>; /* tune to taste */
         };
 
+        sp_nav: sp_nav {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <0>;
+        
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <0>;
+            // Optional: helps prevent accidental “nav” when you’re just typing space quickly.
+            // require-prior-idle-ms = <80>;
+        
+            bindings = <&mo NAV>, <&kp SPACE>;
+        };
+
         para: para {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -237,7 +250,7 @@
             &kp ESCAPE   &hm LCTRL A  &hm LALT S   &hm LGUI D   &hm LSHFT F  &kp G         &kp H        &hm LSHFT J  &hm LGUI K   &hm LALT L   &hm LCTRL SEMI  &ss_toolbar
             &kp CAPSLOCK &kp Z        &kp X        &kp C        &kp V        &kp B         &kp N        &kp M        &kp COMMA    &kp DOT      &kp FSLH     &ss_select
         
-                                  &tog SYM   &tog NUM   &lt SYS RET      &lt NAV SPACE   &kp BACKSPACE   &mo MOU
+                                  &tog SYM   &tog NUM   &lt SYS RET      &sp_nav   &kp BACKSPACE   &mo MOU
           >;
         };
 
