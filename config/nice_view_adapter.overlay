@@ -1,6 +1,5 @@
-/* Override the CS pin used by the nice_view_adapter/nice_view stack.
- * Do NOT define a new nice_view_spi label or ls0xx node here.
- */
-&nice_view_spi {
+/* Only override the SPI CS pin used for the nice!view adapter. */
+&pro_micro_spi {
+  status = "okay";
   cs-gpios = <&pro_micro 4 GPIO_ACTIVE_LOW>;
 };
