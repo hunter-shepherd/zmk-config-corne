@@ -1,17 +1,6 @@
-&pro_micro_i2c {
-  status = "disabled";
-};
-
-&pro_micro_spi {
-  status = "okay";
+/* Override the CS pin used by the nice_view_adapter/nice_view stack.
+ * Do NOT define a new nice_view_spi label or ls0xx node here.
+ */
+&nice_view_spi {
   cs-gpios = <&pro_micro 4 GPIO_ACTIVE_LOW>;
-
-  nice_view_spi: ls0xx@0 {
-    compatible = "sharp,ls0xx";
-    label = "DISPLAY";
-    spi-max-frequency = <1000000>;
-    reg = <0>;
-    width = <160>;
-    height = <68>;
-  };
 };
