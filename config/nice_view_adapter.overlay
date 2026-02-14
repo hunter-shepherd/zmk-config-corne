@@ -1,7 +1,0 @@
-/* config/nice_view_adapter.overlay */
-#include <dt-bindings/gpio/gpio.h>
-
-/* Override CS on the SPI bus used by nice_view */
-&spi0 {
-    cs-gpios = <&pro_micro 4 GPIO_ACTIVE_LOW>;
-};
