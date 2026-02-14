@@ -18,15 +18,15 @@
 #
 ---
 include:
-  - board: nice_nano@2.0.0
+  - board: nice_nano
     shield: corne_left nice_view_adapter nice_view
-    artifact-name: corne_left_niceview
-    cmake-args: -DCONFIG_ZMK_USB_LOGGING=y -DCONFIG_LOG=y
+    artifact-name: corne_left_niceview_usb_logs
+    snippet: zmk-usb-logging
 
-  - board: nice_nano@2.0.0
+  - board: nice_nano
     shield: corne_right nice_view_adapter nice_view
     artifact-name: corne_right_niceview
 
-  - board: nice_nano@2.0.0
+  - board: nice_nano
     shield: settings_reset
     artifact-name: settings_reset
