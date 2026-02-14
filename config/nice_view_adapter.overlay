@@ -1,0 +1,11 @@
+/* config/nice_view_adapter.overlay */
+#include <dt-bindings/gpio/gpio.h>
+
+/*
+ * FORCE nice_view SPI chip-select to Pro Micro D4.
+ * If this makes the screens wake up, your adapter/wiring expects CS on D4.
+ * If it doesn't, we'll switch this to D1 (or try another).
+ */
+&nice_view_spi {
+    cs-gpios = <&pro_micro 4 GPIO_ACTIVE_LOW>;
+};
