@@ -18,15 +18,24 @@
 #
 ---
 include:
-  - board: nice_nano
-    shield: corne_left nice_view_adapter nice_view
-    artifact-name: corne_left_niceview_usb_logs
-    snippet: zmk-usb-logging
+  - board: nice_nano@2.0.0
+    shield: corne_left
+    snippet: studio-rpc-usb-uart
+    artifact-name: corne_left
 
-  - board: nice_nano
+  - board: nice_nano@2.0.0
+    shield: corne_left nice_view_adapter nice_view
+    snippet: studio-rpc-usb-uart
+    artifact-name: corne_left_niceview
+
+  - board: nice_nano@2.0.0
     shield: corne_right nice_view_adapter nice_view
     artifact-name: corne_right_niceview
 
-  - board: nice_nano
+  - board: nice_nano@2.0.0
+    shield: corne_right
+    artifact-name: corne_right
+
+  - board: nice_nano@2.0.0
     shield: settings_reset
     artifact-name: settings_reset
