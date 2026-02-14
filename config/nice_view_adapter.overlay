@@ -1,0 +1,17 @@
+&pro_micro_i2c {
+  status = "disabled";
+};
+
+&pro_micro_spi {
+  status = "okay";
+  cs-gpios = <&pro_micro 4 GPIO_ACTIVE_LOW>;
+
+  nice_view_spi: ls0xx@0 {
+    compatible = "sharp,ls0xx";
+    label = "DISPLAY";
+    spi-max-frequency = <1000000>;
+    reg = <0>;
+    width = <160>;
+    height = <68>;
+  };
+};
