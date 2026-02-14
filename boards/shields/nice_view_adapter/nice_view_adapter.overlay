@@ -4,7 +4,7 @@
 
 &pro_micro_spi {
     status = "okay";
-    cs-gpios = <&pro_micro 4 GPIO_ACTIVE_LOW>;
+    cs-gpios = <&pro_micro 1 GPIO_ACTIVE_LOW>;
     
     nice_view_spi: ls0xx@0 {
         compatible = "sharp,ls0xx";
