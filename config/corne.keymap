@@ -242,11 +242,11 @@
           display-name = "Base";
         
           bindings = <
-            &kp TAB      &kp Q        &kp W        &kp E        &kp R        &kp T         &kp Y        &kp U        &kp I        &kp O        &kp P        &kp DELETE
+            &kp TAB      &kp Q        &kp W        &kp E        &kp R        &kp T         &kp Y        &kp U        &kp I        &kp O        &kp P        &kp BACKSPACE
             &kp ESCAPE   &hm LCTRL A  &hm LALT S   &hm LGUI D   &hm LSHFT F  &kp G         &kp H        &hm LSHFT J  &hm LGUI K   &hm LALT L   &hm LCTRL SEMI  &ss_toolbar
             &kp CAPSLOCK &kp Z        &kp X        &kp C        &kp V        &kp B         &kp N        &kp M        &kp COMMA    &kp DOT      &kp FSLH     &ss_select
         
-            &tog SYM   &tog NUM   &lt SYS RET   &sp_nav NAV SPACE   &kp BACKSPACE   &mo MOU
+            &tog SYM   &tog NUM   &mo MOU   &sp_nav NAV SPACE   &lt SYS RET   &kp DELETE
           >;
         };
 
